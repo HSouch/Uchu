@@ -5,8 +5,7 @@ from matplotlib import pyplot as plt
 
 
 galaxy = Galaxy(hlr=30, I_e=30, n=0.7, sb_eff=23, r_b=3, I_b=10, ipls=0.20, opls=0.77, alpha=6.50, I_0=40)
-# model = sersic_intensity_profile
-model = nuker_sersic_profile
+model = core_sersic_profile
 
 profiles = []
 for n in range(1, 10):

@@ -66,7 +66,7 @@ def nuker_profile(r, params):
     #     return None
 
 
-def nuker_sersic_profile(r, params):
+def core_sersic_profile(r, params):
     """
     A combined Nuker-law, Sersic model for intensity.
     :param r: The radius being examined
