@@ -4,19 +4,19 @@ from uchu.simulation.single_sim import *
 from matplotlib import pyplot as plt
 
 
-galaxy = Galaxy(hlr=150, I_e=100, n=1.5, r_b=3, I_b=20, ipls=2.5, opls=0.7, alpha=1.3)
-model = sersic_profile
+galaxy = Galaxy(hlr=30, I_e=30, n=0.7, sb_eff=23, r_b=3, I_b=10, ipls=0.20, opls=0.77, alpha=6.50, I_0=40)
+# model = sersic_intensity_profile
+model = nuker_sersic_profile
 
-models = []
-for x in range(1, 6):
-    galaxy.n = x / 2
-    models.append(full_galaxy_plot(galaxy, model, 500))
+profiles = []
+for n in range(1, 10):
+    galaxy.n = n
+    profiles.append(Model1D(galaxy, model, rel_convert=True))
 
-fig, ax = plt.subplots(1, 5)
-for x in range(0, 5):
-    ax[x].imshow(models[x])
-    readout = "n= " + str((x + 1) / 2) + "\nr_eff= " + str(galaxy.get_params()["hlr"]) + "\nI_eff= " + str(galaxy.get_params()["I_e"])
-    ax[x].text(20, 100, readout, color='white')
-    ax[x].set_xticks([])
-    ax[x].set_yticks([])
-plt.show()
+full_galaxy_plot(galaxy, model, size=200)
+
+# for x in profiles:
+#     plt.plot(x[0], x[1], color="black")
+#
+# plt.yscale('log')
+# plt.show()
