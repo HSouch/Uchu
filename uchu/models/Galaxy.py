@@ -12,3 +12,8 @@ class Galaxy:
         self.ipls = kwargs["ipls"]
         self.opls = kwargs["opls"]
         self.alpha = kwargs["alpha"]
+
+    def get_params(self):
+        return {"hlr": self.hlr, "I_e": self.I_e, "n": self.n, "r_b": self.r_b, "I_b": self.I_b, "ipls": self.ipls,
+                "opls": self.opls, "alpha": self.alpha}
+
