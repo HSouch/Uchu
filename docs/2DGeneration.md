@@ -1,6 +1,6 @@
 # 2D Galaxy Modelling
 
-To generate galaxies with Uchu, you need to have two objects: A galaxy and a model.
+To generate galaxies with Uchu, you need to have two objects: A galaxy object with sufficient parameters and a valid model.
 
 ```
 from uchu.models.SBModel import *
@@ -23,3 +23,5 @@ The models currently available include:
 
 The galaxy settings in the example produce a standard galaxy with a low Sersic index. These values can be shifted and fine tuned. 
 Please note that the model is not assigned with any curved brackets. Parameters are assigned in ```full_galaxy_plt()```.
+
+It is also important to know that different models require different parameters. Sersic models only require iffective intensity, effective radius, and the Sersic index, whereas a core-seric model requires more.
