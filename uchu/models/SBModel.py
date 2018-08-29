@@ -7,7 +7,7 @@ Surface Brightness Models
 =======================================
 """
 
-def sersic_intensity_profile(r, params):
+def sersic_intensity(r, params):
     """
     A single-Sersic intensity profile. (Sersic, (1968))
     :param r: The radius being examined
@@ -24,7 +24,7 @@ def sersic_intensity_profile(r, params):
         return None
 
 
-def sersic_sb_profile(r, params):
+def sersic_sb(r, params):
     """
     A Sersic surface brightness profile. (Sersic(1968), Graham(2005)) 
     :param r: 
@@ -42,7 +42,7 @@ def sersic_sb_profile(r, params):
         return None
 
 
-def nuker_profile(r, params):
+def nuker(r, params):
     """
     A galaxy profile defined by the Nuker Law (Erwin et al. (2003)).
     This profile is used as a means to probe details about a galaxy's core. It does not accurately plot a galaxy's
@@ -54,19 +54,18 @@ def nuker_profile(r, params):
     r_b, I_b, ipls, opls, alpha = params["r_b"], params["I_b"], params["ipls"], params["opls"], params["alpha"]
     if r == 0:
         return params["I_0"]
+    try:
+        p_1 = (opls - ipls) / alpha
+        p_2 = (ipls - opls) / alpha
+        f_1 = (r / r_b) ** (-ipls)
+        f_2 = (1 + ((r / r_b) ** alpha))
+        return I_b * (2 ** p_1) * f_1 * (f_2 ** p_2)
+    except:
+        print("Input Error: Check your parameters.")
+        return None
 
-    p_1 = (opls - ipls) / alpha
-    p_2 = (ipls - opls) / alpha
-    f_1 = (r / r_b) ** (-ipls)
-    f_2 = (1 + ((r / r_b) ** alpha))
-    return I_b * (2 ** p_1) * f_1 * (f_2 ** p_2)
 
-    # except:
-    #     print("Input Error: Check your parameters.")
-    #     return None
-
-
-def core_sersic_profile(r, params):
+def core_sersic(r, params):
     """
     A combined Nuker-law, Sersic model for intensity.
     :param r: The radius being examined

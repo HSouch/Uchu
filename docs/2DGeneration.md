@@ -16,10 +16,10 @@ full_galaxy_plot(galaxy, model, size=200)
 
 
 The models currently available include:
-* sersic_intensity_profile  : Basic Single_Sersic intensity model based on *Sersic (1968)*
-* sersic_sb_profile         : Single Sersic magnitude model based on *Sersic (1968) and Graham (2005)*
-* nuker_profile             : Core profile based on the nuker law, found in *Erwin et al. (2003)*
-* core_sersic_profile       : Combined Nuker and Sersic profile to model core and outer regions together. Trujillo (2004)
+* sersic_intensity  : Basic Single_Sersic intensity model based on *Sersic (1968)*
+* sersic_sb       : Single Sersic magnitude model based on *Sersic (1968) and Graham (2005)*
+* nuker            : Core profile based on the nuker law, found in *Erwin et al. (2003)*
+* core_sersic      : Combined Nuker and Sersic profile to model core and outer regions together. Trujillo (2004)
 
 The galaxy settings in the example produce a standard galaxy with a low Sersic index. These values can be shifted and fine tuned. 
 Please note that the model is not assigned with any curved brackets. Parameters are assigned in ```full_galaxy_plt()```.
