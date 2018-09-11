@@ -1,5 +1,5 @@
 from uchu.models.SBModel import *
-from uchu.plotting import *
+from uchu.plotting import galaxy_plot
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -12,12 +12,7 @@ def full_galaxy_plot(galaxy, model, size, noise=0):
     for x in range(0, base_image.shape[0]):
         for y in range(0, base_image.shape[1]):
             base_image[x][y] = model(get_dist((x, y), centre_pix), galaxy.get_params())
-    plt.imshow(base_image)
-    readout = "n= " + str(params["n"]) + "\nr_eff= " + str(params["hlr"]) + "\nI_eff= " + str(params["I_e"])
-    plt.text(20, 100, readout, color='white')
-    plt.xticks([])
-    plt.yticks([])
-    plt.show()
+
     return base_image
 
 
@@ -26,6 +21,7 @@ def model_galaxy(model, params):
 
 
 def get_dist(p1, p2, conversion=1):
+    """ Returns the distance between pixels p1 and p2. Adjusts to a conversion scaling factor if needed. """
     return np.sqrt(((p2[0] - p1[0]) ** 2) + ((p2[1] - p1[1]) ** 2)) / conversion
 
 
@@ -37,9 +33,7 @@ def Model1D(galaxy, model, max_r=100, plot=False, rel_convert=False):
         xs.append(r)
         ys.append(model(r, params))
     if plot:
-        plt.plot(xs, ys, color="black")
-        plt.yscale('log')
-        plt.show()
+        galaxy_plot.plot_1D(xs, ys)
     if rel_convert:
         for ind in range(0, len(xs)):
             xs[ind] /= params["hlr"]
