@@ -1,6 +1,6 @@
 # 2D Galaxy Modelling
 
-To generate galaxies with Uchu, you need to have two objects: A galaxy object with sufficient parameters and a valid model.
+To generate galaxies with *Uchu*, you need to have two objects: A galaxy object with sufficient parameters and a valid model.
 
 ```
 from uchu.models.SBModel import *

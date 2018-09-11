@@ -7,6 +7,7 @@ Surface Brightness Models
 =======================================
 """
 
+
 def sersic_intensity(r, params):
     """
     A single-Sersic intensity profile. (Sersic, (1968))
